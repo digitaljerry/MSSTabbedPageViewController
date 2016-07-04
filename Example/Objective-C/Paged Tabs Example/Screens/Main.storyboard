@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PnR-mV-E6n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Dqj-ig-Ayg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Child View Controller-->
@@ -52,6 +53,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWf-82-KQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="376" y="-362"/>
+        </scene>
+        <!--Data Source-->
+        <scene sceneID="72n-Fy-XCa">
+            <objects>
+                <viewController id="Dqj-ig-Ayg" customClass="LMainTabbedPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hwd-91-3hl"/>
+                        <viewControllerLayoutGuide type="bottom" id="FsP-kV-6tO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oPW-sh-YjK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGk-Ke-C00" userLabel="TabView" customClass="MSSTabBarView">
+                                <rect key="frame" x="70" y="30" width="460" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="61v-e0-SjX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ClI-Qx-fq2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ClI-Qx-fq2"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dqj-ig-Ayg" id="BPj-8G-Rb8"/>
+                                    <outlet property="delegate" destination="Dqj-ig-Ayg" id="oPk-1a-XSq"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KGk-Ke-C00" firstAttribute="centerX" secondItem="oPW-sh-YjK" secondAttribute="centerX" id="SKJ-pe-uMC"/>
+                            <constraint firstItem="KGk-Ke-C00" firstAttribute="leading" secondItem="oPW-sh-YjK" secondAttribute="leadingMargin" constant="50" id="VK3-hS-jWP"/>
+                            <constraint firstItem="KGk-Ke-C00" firstAttribute="top" secondItem="Hwd-91-3hl" secondAttribute="bottom" constant="10" id="h8Y-iI-y9B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KGk-Ke-C00" secondAttribute="trailing" constant="50" id="tqd-CI-gPG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SKJ-pe-uMC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tabBarView" destination="KGk-Ke-C00" id="LEa-OH-AH9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="641-9D-ews" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="376" y="346"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="BoV-nD-gIP">

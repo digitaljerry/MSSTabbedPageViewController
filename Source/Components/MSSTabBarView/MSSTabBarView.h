@@ -97,6 +97,8 @@ __attribute__((deprecated("Use numberOfItemsForTabBarView and tabBarView:populat
 
 @interface MSSTabBarView : UIView
 
+@property (readonly)  UICollectionView * _Nullable collectionView;
+
 /**
  The object that acts as the data source for the tab bar.
  */
@@ -177,6 +179,11 @@ __attribute__((deprecated("Use numberOfItemsForTabBarView and tabBarView:populat
  The appearance attributes for the tab indicator.
  */
 @property (nonatomic, strong, nullable) NSDictionary <NSString *, id> *indicatorAttributes UI_APPEARANCE_SELECTOR;
+
+/**
+ The appearance attributes for the tab back indicator.
+ */
+@property (nonatomic, strong, nullable) NSDictionary <NSString *, id> *indicatorBackAttributes UI_APPEARANCE_SELECTOR;
 
 /**
  The transition style for the tabs to use during transitioning.

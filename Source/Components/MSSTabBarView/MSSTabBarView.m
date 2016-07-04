@@ -18,14 +18,15 @@ NSString *  const MSSTabBarViewCellIdentifier = @"tabCell";
 
 // defaults
 CGFloat     const MSSTabBarViewDefaultHeight = 44.0f;
-CGFloat     const MSSTabBarViewDefaultTabIndicatorHeight = 2.0f;
-CGFloat     const MSSTabBarViewDefaultTabPadding = 8.0f;
-CGFloat     const MSSTabBarViewDefaultTabUnselectedAlpha = 0.3f;
-CGFloat     const MSSTabBarViewDefaultHorizontalContentInset = 8.0f;
+CGFloat     const MSSTabBarViewDefaultTabIndicatorHeight = 4.0f;
+CGFloat     const MSSTabBarViewDefaultTabIndicatorBackHeight = 1.0f;
+CGFloat     const MSSTabBarViewDefaultTabPadding = 0.0f;
+CGFloat     const MSSTabBarViewDefaultTabUnselectedAlpha = 1.0f;
+CGFloat     const MSSTabBarViewDefaultHorizontalContentInset = 0.0f;
 NSString *  const MSSTabBarViewDefaultTabTitleFormat = @"Tab %li";
 BOOL        const MSSTabBarViewDefaultScrollEnabled = NO;
 
-NSInteger   const MSSTabBarViewMaxDistributedTabs = 5;
+NSInteger   const MSSTabBarViewMaxDistributedTabs = 3;
 CGFloat     const MSSTabBarViewTabTransitionSnapRatio = 0.5f;
 
 CGFloat     const MSSTabBarViewTabOffsetInvalid = -1.0f;
@@ -43,6 +44,8 @@ CGFloat     const MSSTabBarViewTabOffsetInvalid = -1.0f;
 @property (nonatomic, strong) UIView *indicatorView;
 @property (nonatomic, assign) CGFloat lineIndicatorHeight;
 @property (nonatomic, assign) CGFloat lineIndicatorInset;
+
+@property (nonatomic, strong) UIView *indicatorBackView;
 
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) CGFloat previousTabOffset;
@@ -118,6 +121,9 @@ static MSSTabBarCollectionViewCell *_sizingCell;
     _indicatorContainer.userInteractionEnabled = NO;
     _indicatorAttributes = @{MSSTabIndicatorLineHeight : @(MSSTabBarViewDefaultTabIndicatorHeight),
                              NSForegroundColorAttributeName : self.tintColor};
+    
+    _indicatorBackView = [UIView new];
+    [self addSubview:_indicatorBackView];
 }
 
 #pragma mark - Lifecycle
@@ -379,6 +385,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 - (void)setSelectionIndicatorTransitionStyle:(MSSTabTransitionStyle)selectionIndicatorTransitionStyle {
     self.indicatorTransitionStyle = selectionIndicatorTransitionStyle;
 }
+
+- (void)setIndicatorBackAttributes:(NSDictionary<NSString *,id> *)indicatorAttributes {
+    _indicatorBackAttributes = indicatorAttributes;
+    [self updateIndicatorBackAppearance];
+}
+
 
 - (void)setIndicatorAttributes:(NSDictionary<NSString *,id> *)indicatorAttributes {
     _indicatorAttributes = indicatorAttributes;
@@ -781,7 +793,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     self.indicatorView = indicatorView;
+    
     [self updateIndicatorAppearance];
+}
+
+- (void)updateIndicatorBackAppearance {
+    if (self.indicatorBackAttributes) {
+        UIColor *indicatorBackColor;
+        if ((indicatorBackColor = self.indicatorBackAttributes[NSForegroundColorAttributeName])) {
+            self.indicatorBackView.backgroundColor = indicatorBackColor;
+        }
+    }
 }
 
 - (void)updateIndicatorAppearance {
@@ -835,9 +857,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     self.indicatorView.frame = CGRectMake(0.0f,
-                                          containerBounds.size.height - height,
+                                          0,
                                           containerBounds.size.width,
                                           height);
+    
+    self.indicatorBackView.frame = CGRectMake(0.0f,
+                                              0,
+                                              self.frame.size.width,
+                                              MSSTabBarViewDefaultTabIndicatorBackHeight);
 }
 
 - (CGFloat)tabDeselectedAlpha {
