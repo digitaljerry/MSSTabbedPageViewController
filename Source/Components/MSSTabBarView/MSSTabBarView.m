@@ -19,7 +19,7 @@ NSString *  const MSSTabBarViewCellIdentifier = @"tabCell";
 // defaults
 CGFloat     const MSSTabBarViewDefaultHeight = 44.0f;
 CGFloat     const MSSTabBarViewDefaultTabIndicatorHeight = 4.0f;
-CGFloat     const MSSTabBarViewDefaultTabIndicatorBackHeight = 1.0f;
+CGFloat     const MSSTabBarViewDefaultTabIndicatorBackHeight = 0.5f;
 CGFloat     const MSSTabBarViewDefaultTabPadding = 0.0f;
 CGFloat     const MSSTabBarViewDefaultTabUnselectedAlpha = 1.0f;
 CGFloat     const MSSTabBarViewDefaultHorizontalContentInset = 0.0f;
