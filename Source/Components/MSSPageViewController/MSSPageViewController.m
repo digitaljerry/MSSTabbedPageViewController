@@ -102,7 +102,6 @@ NSInteger const MSSPageViewControllerPageNumberInvalid = -1;
     
     [self.pageViewController addToParentViewController:self atZIndex:0];
     self.scrollView.delegate = self;
-    self.scrollView.bounces = NO;
     
     [self setUpPages];
 }
@@ -292,6 +291,14 @@ NSInteger const MSSPageViewControllerPageNumberInvalid = -1;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    if (_currentPage == 0 && scrollView.contentOffset.x < scrollView.bounds.size.width) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+        return;
+    } else if (_currentPage == _numberOfPages-1 && scrollView.contentOffset.x > scrollView.bounds.size.width) {
+        scrollView.contentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+        return;
+    }
+    
     CGFloat pageWidth = scrollView.frame.size.width;
     CGFloat scrollOffset = (scrollView.contentOffset.x - pageWidth);
     
@@ -347,6 +354,14 @@ NSInteger const MSSPageViewControllerPageNumberInvalid = -1;
         }
         
         _previousPagePosition = currentPagePosition;
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (_currentPage == 0 && scrollView.contentOffset.x <= scrollView.bounds.size.width) {
+        *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
+    } else if (_currentPage == _numberOfPages-1 && scrollView.contentOffset.x >= scrollView.bounds.size.width) {
+        *targetContentOffset = CGPointMake(scrollView.bounds.size.width, 0);
     }
 }
 
