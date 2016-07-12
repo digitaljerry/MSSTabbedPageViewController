@@ -112,6 +112,8 @@
                          strongSelf.allowScrollViewUpdates = YES;
                          strongSelf.userInteractionEnabled = YES;
                      }];
+    } else {
+        [self tappedPageAlreadySelectedAtIndex:index];
     }
 }
 
@@ -127,6 +129,10 @@
           willScrollToPage:(NSInteger)newPage
                currentPage:(NSInteger)currentPage {
     self.tabBarView.userInteractionEnabled = NO;
+}
+
+- (void)pageViewController:(nonnull MSSPageViewController *)pageViewController tappedAlreadySelectedViewController:(NSInteger)index {
+    NSLog(@"tappedAlreadySelectedViewController: %ld", (long)index);
 }
 
 - (void)pageViewController:(MSSPageViewController *)pageViewController

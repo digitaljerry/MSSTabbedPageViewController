@@ -123,6 +123,12 @@ NSInteger const MSSPageViewControllerPageNumberInvalid = -1;
     [self moveToPageAtIndex:index completion:nil];
 }
 
+- (void)tappedPageAlreadySelectedAtIndex:(NSInteger)index {
+    if ([self.delegate respondsToSelector:@selector(pageViewController:tappedAlreadySelectedViewController:)]) {
+        [self.delegate pageViewController:self tappedAlreadySelectedViewController:self.currentPage];
+    }
+}
+
 - (void)moveToPageAtIndex:(NSInteger)index
                completion:(void (^)(UIViewController *, BOOL, BOOL))completion {
     

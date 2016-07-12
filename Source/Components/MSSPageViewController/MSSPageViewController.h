@@ -61,6 +61,14 @@ typedef void(^MSSPageViewControllerPageMoveCompletion)(UIViewController *_Nonnul
            didScrollToPage:(NSInteger)page;
 
 /**
+ Tapped page view controller that is already selected.
+ 
+ @param index
+ The page view controller.
+ */
+- (void)pageViewController:(nonnull MSSPageViewController *)pageViewController tappedAlreadySelectedViewController:(NSInteger)index;
+
+/**
  The page view controller has successfully prepared child view controllers ready for display.
  
  @param pageViewController
@@ -164,6 +172,14 @@ willDisplayInitialViewController:(nonnull UIViewController *)viewController;
  The index of the page to display.
  */
 - (void)moveToPageAtIndex:(NSInteger)index;
+
+/**
+ Tapped a page that is already selected at specific index.
+ 
+ @param index
+ The index of the page that was tapped.
+ */
+- (void)tappedPageAlreadySelectedAtIndex:(NSInteger)index;
 
 /**
  Move page view controller to a page at specific index.
