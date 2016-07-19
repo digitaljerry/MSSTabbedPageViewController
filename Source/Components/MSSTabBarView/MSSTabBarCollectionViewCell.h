@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MSSTabStyle.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MSSTabBarCollectionViewCell : UICollectionViewCell
 
@@ -27,5 +28,9 @@
  NOTE - only visible when using MSSTabStyleText.
  */
 @property (nonatomic, copy, nullable) NSString *title;
+
+- (void)showLiveView:(BOOL)show;
+- (void)showActivityVew:(BOOL)show;
+
 
 @end

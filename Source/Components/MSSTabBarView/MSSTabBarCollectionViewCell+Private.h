@@ -24,8 +24,13 @@
 
 @property (nonatomic, assign) BOOL alphaEffectEnabled;
 
+@property (weak, nonatomic) IBOutlet UILabel *liveViewLabel;
+
 - (void)setTabStyle:(MSSTabStyle)tabStyle;
 
 - (void)setContentBottomMargin:(CGFloat)contentBottomMargin;
+
+- (void)showLiveView:(BOOL)show;
+- (void)showActivityView:(BOOL)show;
 
 @end

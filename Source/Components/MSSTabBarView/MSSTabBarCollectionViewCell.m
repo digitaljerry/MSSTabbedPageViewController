@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textTopAlignment;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageBottomAlignment;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textCenterAlignment;
+@property (weak, nonatomic) IBOutlet UIView *dotView;
+@property (weak, nonatomic) IBOutlet UIView *liveView;
 
 @end
 
@@ -45,6 +47,10 @@
 
 - (void)baseInit {
     _alphaEffectEnabled = YES; // alpha effect enabled by default
+    self.dotView.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    self.dotView.layer.borderWidth = 1;
+    self.dotView.layer.borderColor = [[UIColor whiteColor] CGColor];
 }
 
 #pragma mark - Public
@@ -53,6 +59,10 @@
     if (self.tabStyle == MSSTabStyleText || self.tabStyle == MSSTabStyleImageAndText) {
         self.titleLabel.text = title;
     }
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
 }
 
 - (NSString *)title {
@@ -215,6 +225,14 @@
         _isSelected = isSelected;
         self.selected = isSelected;
     }
+}
+
+- (void)showLiveView:(BOOL)show; {
+    self.liveView.hidden = !show;
+}
+
+- (void)showActivityView:(BOOL)show; {
+    self.dotView.hidden = !show;
 }
 
 @end
