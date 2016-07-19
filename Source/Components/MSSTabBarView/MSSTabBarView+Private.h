@@ -15,4 +15,10 @@
  */
 @property (nonatomic, assign) CGFloat tabOffset;
 
+- (void)showActivityDot:(BOOL)show forIndexPath:(NSIndexPath*)indexPath;
+
+- (void)showLiveView:(BOOL)show forIndexPath:(NSIndexPath*)indexPath;
+
+- (void)setLiveViewTitleString:(NSString*)string;
+
 @end

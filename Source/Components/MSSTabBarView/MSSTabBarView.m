@@ -411,6 +411,25 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
 }
 
+- (void)showActivityDot:(BOOL)show forIndexPath:(NSIndexPath*)indexPath {
+    MSSTabBarCollectionViewCell *cell = (MSSTabBarCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    [cell showActivityVew:show];
+}
+
+- (void)showLiveView:(BOOL)show forIndexPath:(NSIndexPath*)indexPath {
+    MSSTabBarCollectionViewCell *cell = (MSSTabBarCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    [cell showLiveView:show];
+}
+
+- (void)setLiveViewTitleString:(NSString*)string {
+    [[self.collectionView visibleCells] enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        MSSTabBarCollectionViewCell *cell = (MSSTabBarCollectionViewCell*)obj;
+        [cell.liveViewLabel setText:string];
+        
+    }];
+}
+
 #pragma mark - Tab Bar State
 
 - (void)updateTabBarForTabOffset:(CGFloat)tabOffset {
