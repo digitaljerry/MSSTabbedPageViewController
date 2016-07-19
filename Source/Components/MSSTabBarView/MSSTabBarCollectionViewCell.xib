@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="157" height="58"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-mn-Vu6">
-                                <rect key="frame" x="10" y="58" width="137" height="0.0"/>
+                                <rect key="frame" x="2" y="58" width="153" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -39,9 +39,9 @@
                             <constraint firstAttribute="trailing" secondItem="u6B-3w-cac" secondAttribute="trailing" priority="500" id="GWf-K6-oau"/>
                             <constraint firstItem="7ve-mn-Vu6" firstAttribute="top" secondItem="Ukc-mv-vnO" secondAttribute="top" id="H0b-1r-rup"/>
                             <constraint firstAttribute="bottom" secondItem="7ve-mn-Vu6" secondAttribute="bottom" id="LMX-gA-SyT"/>
-                            <constraint firstAttribute="trailing" secondItem="7ve-mn-Vu6" secondAttribute="trailing" constant="10" id="Q8D-fa-6MO"/>
+                            <constraint firstAttribute="trailing" secondItem="7ve-mn-Vu6" secondAttribute="trailing" constant="2" id="Q8D-fa-6MO"/>
                             <constraint firstItem="7ve-mn-Vu6" firstAttribute="top" secondItem="Ukc-mv-vnO" secondAttribute="top" id="dav-nD-7iA" userLabel="Title Top"/>
-                            <constraint firstItem="7ve-mn-Vu6" firstAttribute="leading" secondItem="Ukc-mv-vnO" secondAttribute="leading" constant="10" id="e16-gi-ThL"/>
+                            <constraint firstItem="7ve-mn-Vu6" firstAttribute="leading" secondItem="Ukc-mv-vnO" secondAttribute="leading" constant="2" id="e16-gi-ThL"/>
                             <constraint firstItem="u6B-3w-cac" firstAttribute="centerX" secondItem="Ukc-mv-vnO" secondAttribute="centerX" id="fiI-xm-8XJ"/>
                             <constraint firstItem="u6B-3w-cac" firstAttribute="top" secondItem="Ukc-mv-vnO" secondAttribute="top" id="nA2-tp-AXj"/>
                             <constraint firstItem="u6B-3w-cac" firstAttribute="leading" secondItem="Ukc-mv-vnO" secondAttribute="leading" priority="500" id="zqX-PN-pYf"/>
